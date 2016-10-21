@@ -49,15 +49,6 @@ $(document).ready(function(){
 			else if (day === 6) {
 				$('h1').html("Samedi");
 			}
-
-			// var weekday = new Array(7);
-			// weekday[0] = "Dimanche";
-			// weekday[1] = "Lundi";
-			// weekday[2] = "Mardi";
-			// weekday[3] = "Mercredi";
-			// weekday[4] = "Jeudi";
-			// weekday[5] = "Vendredi";
-			// weekday[6] = "Samedi";
 		},
 	}
 
