@@ -52,13 +52,12 @@ $(document).ready(function(){
 		},
 
 		showResult: function() {
-			$('#overlay').html('<h1>' + this.moment + '</h1>' + '<button id="restart">Recommencez</button>');
+			$('#overlay').html('<h1>' + this.moment + '</h1>' + '<button class="restart" id="restart">Recommencez</button>');
 			$('#restart').on('click', this.restart);
 		},
 
 		restart: function() {
 			$('#overlay').hide();
-			$('body').show()
 			this.currentDay = $('#day').val('');
 			this.currentMonth = $('#month').val('');
 			this.currentYear = $('#year').val('');

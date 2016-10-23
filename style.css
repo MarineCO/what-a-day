@@ -6,10 +6,22 @@ body {
 h3 {
 	color: #47b8e0;
 	font-family: 'Open sans';
-
 }
-
-select, input, #button {
+.day, .month, .year {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.global {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.check {
+	display: flex;
+	justify-content: center;
+}
+select, input, #check {
 	background-color: #34314c;
 	color: #47b8e0;
 	border: 2px solid #47b8e0;
@@ -17,14 +29,29 @@ select, input, #button {
 	margin-left: 5px;
 	padding-right: 30px;
 }
-#button:hover {
+#check:hover {
 	background-color: #47b8e0;
 	color: #fff;
 }
-#button {
+#check {
 	margin-top: 30px;
+	font-family: 'Open sans';
+}
+.restart {
+	font-family: 'Open sans';
+	color: #D499B9;
+	background-color: #9055A2;
+	padding: 15px;
+	margin-left: 5px;
+	padding-right: 30px;
+	border: 2px solid #D499B9;
+}
+.restart:hover {
+	background-color: #D499B9;
+	color: #9055A2; 
 }
 .overlay {
+	/*position: absolute;*/
 	text-align: center;
 	font-family: 'Open sans';
 	color: #D499B9;
