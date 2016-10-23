@@ -3,52 +3,54 @@ $(document).ready(function(){
 
 	window.app = {
 
-		day: null,
-		now: null,
+		currentYear: null,
+		currentMonth: null,
+		currentDay: null,
+		date: {},
+		moment: null,
 
 		init: function(){
 			this.listeners();
 		},
 
 		listeners: function(){
-			$('#button').on('click', this.go.bind(this));
+			$('#check').on('click', this.go.bind(this));
+			$('#restart').on('click', this.restart.bind(this));
 		},
 
 		go: function(){
-			this.date();
+			this.currentDay = $('#day').val();
+			this.currentMonth = $('#month').val();
+			this.currentYear = $('#year').val();
+
+			this.date = {day:this.currentDay, month:this.currentMonth, year:this.currentYear}
+
+			this.moment = moment(this.date).format('dddd');
+			console.log(this.moment);
+			this.error();
 		},
 
-		date: function(){
-			now = moment({year:$('#year').val(), month:$('#months').val(), day:$('#day').val()});
-			console.log(now);
-
-			day = now.day();
-			console.log(day);
-			this.updateView();
+		error: function() {
+			if (this.currentDay < 1 || this.currentDay > 31) {
+				$('#day').css('border', '2px solid #ff7473');
+				$('#message').html("Le jour doit être compris entre 1 et 31");
+			}
+			if (this.currentYear < 1) {
+				$('#year').css('border', '2px solid #ff7473');
+				$('#message2').html("L\'année doit être supérieure à 0");
+			}
+			if (this.currentDay > 1 || this.currentDay > 31) {
+				$('#message').remove();
+				$('#day').css('border', '2px solid #47b8e0');
+			}
+			if (this.currentYear > 0) {
+				$('#message2').remove();
+				$('#year').css('border', '2px solid #47b8e0');
+			}
 		},
 
-		updateView: function() {
-			if (day === 0) {
-				$('h1').html("Dimanche");
-			}
-			else if (day === 1) {
-				$('h1').html("Lundi");
-			}
-			else if (day === 2) {
-				$('h1').html("Mardi");
-			}
-			else if (day === 3) {
-				$('h1').html("Mercredi");
-			}
-			else if (day === 4) {
-				$('h1').html("Jeudi");
-			}
-			else if (day === 5) {
-				$('h1').html("Vendredi");
-			}
-			else if (day === 6) {
-				$('h1').html("Samedi");
-			}
+		restart: function() {
+
 		},
 	}
 
