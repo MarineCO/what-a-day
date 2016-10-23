@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 		listeners: function(){
 			$('#check').on('click', this.go.bind(this));
-			$('#restart').on('click', this.restart.bind(this));
 		},
 
 		go: function(){
@@ -28,18 +27,21 @@ $(document).ready(function(){
 			this.moment = moment(this.date).format('dddd');
 			console.log(this.moment);
 			this.error();
+			this.showResult();
 		},
 
 		error: function() {
 			if (this.currentDay < 1 || this.currentDay > 31) {
 				$('#day').css('border', '2px solid #ff7473');
 				$('#message').html("Le jour doit être compris entre 1 et 31");
+				$('#overlay').hide();
 			}
 			if (this.currentYear < 1) {
 				$('#year').css('border', '2px solid #ff7473');
 				$('#message2').html("L\'année doit être supérieure à 0");
+				$('#overlay').hide();
 			}
-			if (this.currentDay > 1 || this.currentDay > 31) {
+			if (this.currentDay >= 1 && this.currentDay < 31) {
 				$('#message').remove();
 				$('#day').css('border', '2px solid #47b8e0');
 			}
@@ -49,8 +51,17 @@ $(document).ready(function(){
 			}
 		},
 
-		restart: function() {
+		showResult: function() {
+			$('#overlay').html('<h1>' + this.moment + '</h1>' + '<button id="restart">Recommencez</button>');
+			$('#restart').on('click', this.restart);
+		},
 
+		restart: function() {
+			$('#overlay').hide();
+			$('body').show()
+			this.currentDay = $('#day').val('');
+			this.currentMonth = $('#month').val('');
+			this.currentYear = $('#year').val('');
 		},
 	}
 
