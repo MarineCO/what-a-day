@@ -18,61 +18,54 @@ $(document).ready(function(){
 		},
 
 		go: function(){
+			this.reset();
 			this.currentDay = $('#day').val();
 			this.currentMonth = $('#month').val();
 			this.currentYear = $('#year').val();
 
 			this.date = {day:this.currentDay, month:this.currentMonth, year:this.currentYear}
-
 			this.moment = moment(this.date).format('dddd');
-			console.log(this.moment);
+
 			this.error();
-			this.showResult();
 		},
 
 		error: function() {
-			var dayInfOne = this.currentDay < 1;
-			var daySuppThirtyOne = this.currentDay > 31; 
-			var yearInfOne = this.currentYear < 1;
-
-			var daySuppOne = this.currentDay >= 1;
-			var dayInfThirtyOne = this.currentDay <= 31;
-			var yearSuppZero = this.currentYear > 0;
-
-			if (dayInfOne) {
+			if (this.currentDay < 1 || this.currentDay > 31) {
 				$('#day').css('border', '2px solid #ff7473');
-				$('#message').html("Le jour doit être supérieur à 1");
-				$('#overlay').hide();
+				$('#message').append("Le jour doit être supérieur ou égal à 1 et inférieur ou égal à 31");
 			}
-			if (daySuppThirtyOne) {
-				$('#day').css('border', '2px solid #ff7473');
-				$('#message').html("Le jour doit être inférieur à 31");
-				$('#overlay').hide();
-			}
-			if (yearInfOne) { 
+			if (this.currentYear < 1) { 
 				$('#year').css('border', '2px solid #ff7473');
 				$('#message2').html("L\'année doit être supérieure à 0");
-				$('#overlay').hide();
 			}
-			if (daySuppOne && dayInfThirtyOne && yearSuppZero) {
-				$('#overlay').show();
-				$('#message').remove();
-				$('#day').css('border', '2px solid #47b8e0');
-				$('#message2').remove();
-				$('#year').css('border', '2px solid #47b8e0');
+			if (this.currentDay >= 1 && this.currentDay <= 31 && this.currentYear >= 1) {
+				this.reset();
+				this.showResult();
 			}
 		},
 
 		showResult: function() {
-			$('#overlay').html('<h1>' + this.moment + '</h1>' + '<button class="restart" id="restart">Recommencez</button>');
+			$('.essai').hide();
+			$('#overlay').show();
+			$('#overlay').html('<h1>' + this.moment + '</h1>' +
+			 '<button class="restart" id="restart">Recommencez</button>');
 			$('#restart').on('click', this.restart);
 		},
 
+		reset: function() {
+			$('#message').html('');
+			$('#day').css('borderColor', '');
+			$('#message2').html('');
+			$('#year').css('borderColor', '');
+		},
+		
 		restart: function() {
 			$('#overlay').hide();
-			this.currentDay = $('#day').val('');
-			this.currentYear = $('#year').val('');
-			location.reload();
+			this.currentDay = $('#day').val();
+			this.currentYear = $('#year').val();
+			$('.essai').show();
+			// app.go();
+			// app.reset();
 		},
 	}
 
