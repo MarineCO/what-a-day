@@ -2,6 +2,7 @@ body {
 	background-color: #34314c;
 	display: flex;
 	flex-direction: column;
+	margin: 0;
 }
 h3 {
 	color: #47b8e0;
@@ -54,16 +55,23 @@ select, input, #check {
 	color: #9055A2; 
 }
 .overlay {
+	margin: auto;
 	text-align: center;
 	font-family: 'Open sans';
 	color: #D499B9;
 	width: 100%;
-	height: 100%;
-	font-size: 100px; /*enlever pt car ne permet pas au texte de s'adapter à la page*/
+	font-size: 100pt;
     background-color: #9055A2;
 }
 .error {
 	color: #fff;
 	font-family: 'Open sans';
 	background-color: #ff7473;
+}
+h2 {
+	margin: 7%;
+}
+p {
+	margin: 0;
+	padding: 15px;
 }

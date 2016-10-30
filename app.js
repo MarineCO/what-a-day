@@ -32,11 +32,11 @@ $(document).ready(function(){
 		error: function() {
 			if (this.currentDay < 1 || this.currentDay > 31) {
 				$('#day').css('border', '2px solid #ff7473');
-				$('#message').append("Le jour doit être supérieur ou égal à 1 et inférieur ou égal à 31");
+				$('#message').append('<p>' + "Le jour doit être supérieur ou égal à 1 et inférieur ou égal à 31" + '</p>');
 			}
 			if (this.currentYear < 1) { 
 				$('#year').css('border', '2px solid #ff7473');
-				$('#message2').html("L\'année doit être supérieure à 0");
+				$('#message2').html('<p>' + "L\'année doit être supérieure à 0" + '</p>');
 			}
 			if (this.currentDay >= 1 && this.currentDay <= 31 && this.currentYear >= 1) {
 				this.reset();
@@ -47,7 +47,7 @@ $(document).ready(function(){
 		showResult: function() {
 			$('.essai').hide();
 			$('#overlay').show();
-			$('#overlay').html('<h1>' + this.moment + '</h1>' +
+			$('#overlay').html('<h2>' + this.moment + '</h2>' +
 			 '<button class="restart" id="restart">Recommencez</button>');
 			$('#restart').on('click', this.restart);
 		},
@@ -64,8 +64,6 @@ $(document).ready(function(){
 			this.currentDay = $('#day').val();
 			this.currentYear = $('#year').val();
 			$('.essai').show();
-			// app.go();
-			// app.reset();
 		},
 	}
 
