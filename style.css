@@ -60,9 +60,6 @@ select, input, #check {
 	font-size: 100pt;
     background-color: #9055A2;
 }
-h2 {
-	margin: 7%;
-}
 .error {
 	color: #fff;
 	font-family: 'Open sans';
