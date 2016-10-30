@@ -55,21 +55,21 @@ select, input, #check {
 	color: #9055A2; 
 }
 .overlay {
-	margin: auto;
 	text-align: center;
 	font-family: 'Open sans';
 	color: #D499B9;
 	width: 100%;
+	height: 520px;
 	font-size: 100pt;
-    background-color: #9055A2;
+	background-color: #9055A2;
+}
+h2 {
+	margin: 0;
 }
 .error {
 	color: #fff;
 	font-family: 'Open sans';
 	background-color: #ff7473;
-}
-h2 {
-	margin: 7%;
 }
 p {
 	margin: 0;
